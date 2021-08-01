@@ -10,7 +10,7 @@
 // app.js
 const { createSSRApp } = require('vue')
 
-function createApp() {
+module exports = function createApp() {
   return createSSRApp({
     data() {
       return {
@@ -28,7 +28,7 @@ function createApp() {
 // server.js
 const { renderToString } = require('@vue/server-renderer')
 const server = require('express')()
-const { createApp } = require('src/app.js')
+const createApp = require('src/app.js')
 
 server.get('*', async (req, res) => {
   const app = createApp()
